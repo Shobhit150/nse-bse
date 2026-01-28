@@ -1,0 +1,962 @@
+{
+  "timestamp": "-",
+  "scraped_at": "2026-01-28 13:56:33",
+  "companies": [
+    {
+      "company_name": "Hindustan Zinc Limited",
+      "ltp": "722.5",
+      "floor_price": "685",
+      "indicative_price": "690.59",
+      "base_issue_size": "30150000",
+      "total_issue_size": "-",
+      "cumulative_qty_100pc": "5581449",
+      "cumulative_qty_0pc": "250500",
+      "total_qty": "5831949",
+      "times_base": ".19",
+      "times_total": "-",
+      "nse_demand": "-",
+      "bid_details": [
+        {
+          "price_interval": "685",
+          "no_of_bids": "342",
+          "qty_confirmed": "21,94,301",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "21,94,301",
+          "cumulative_confirmed": "44,27,267",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "44,27,267"
+        },
+        {
+          "price_interval": "685.05",
+          "no_of_bids": "4",
+          "qty_confirmed": "3,831",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "3,831",
+          "cumulative_confirmed": "22,32,966",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "22,32,966"
+        },
+        {
+          "price_interval": "685.1",
+          "no_of_bids": "9",
+          "qty_confirmed": "1,76,412",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,76,412",
+          "cumulative_confirmed": "22,29,135",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "22,29,135"
+        },
+        {
+          "price_interval": "685.15",
+          "no_of_bids": "1",
+          "qty_confirmed": "72,000",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "72,000",
+          "cumulative_confirmed": "20,52,723",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "20,52,723"
+        },
+        {
+          "price_interval": "685.25",
+          "no_of_bids": "1",
+          "qty_confirmed": "10,500",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "10,500",
+          "cumulative_confirmed": "19,80,723",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "19,80,723"
+        },
+        {
+          "price_interval": "685.35",
+          "no_of_bids": "5",
+          "qty_confirmed": "4,550",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "4,550",
+          "cumulative_confirmed": "19,70,223",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "19,70,223"
+        },
+        {
+          "price_interval": "685.5",
+          "no_of_bids": "2",
+          "qty_confirmed": "10,350",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "10,350",
+          "cumulative_confirmed": "19,65,673",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "19,65,673"
+        },
+        {
+          "price_interval": "685.55",
+          "no_of_bids": "1",
+          "qty_confirmed": "295",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "295",
+          "cumulative_confirmed": "19,55,323",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "19,55,323"
+        },
+        {
+          "price_interval": "686",
+          "no_of_bids": "43",
+          "qty_confirmed": "70,368",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "70,368",
+          "cumulative_confirmed": "19,55,028",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "19,55,028"
+        },
+        {
+          "price_interval": "686.1",
+          "no_of_bids": "3",
+          "qty_confirmed": "17,584",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "17,584",
+          "cumulative_confirmed": "18,84,660",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "18,84,660"
+        },
+        {
+          "price_interval": "686.3",
+          "no_of_bids": "1",
+          "qty_confirmed": "500",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "500",
+          "cumulative_confirmed": "18,67,076",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "18,67,076"
+        },
+        {
+          "price_interval": "686.35",
+          "no_of_bids": "1",
+          "qty_confirmed": "590",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "590",
+          "cumulative_confirmed": "18,66,576",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "18,66,576"
+        },
+        {
+          "price_interval": "686.5",
+          "no_of_bids": "1",
+          "qty_confirmed": "32",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "32",
+          "cumulative_confirmed": "18,65,986",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "18,65,986"
+        },
+        {
+          "price_interval": "686.55",
+          "no_of_bids": "1",
+          "qty_confirmed": "500",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "500",
+          "cumulative_confirmed": "18,65,954",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "18,65,954"
+        },
+        {
+          "price_interval": "687",
+          "no_of_bids": "19",
+          "qty_confirmed": "1,67,746",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,67,746",
+          "cumulative_confirmed": "18,65,454",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "18,65,454"
+        },
+        {
+          "price_interval": "687.1",
+          "no_of_bids": "2",
+          "qty_confirmed": "30,500",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "30,500",
+          "cumulative_confirmed": "16,97,708",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "16,97,708"
+        },
+        {
+          "price_interval": "687.3",
+          "no_of_bids": "2",
+          "qty_confirmed": "15,500",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "15,500",
+          "cumulative_confirmed": "16,67,208",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "16,67,208"
+        },
+        {
+          "price_interval": "687.5",
+          "no_of_bids": "1",
+          "qty_confirmed": "10,000",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "10,000",
+          "cumulative_confirmed": "16,51,708",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "16,51,708"
+        },
+        {
+          "price_interval": "688",
+          "no_of_bids": "10",
+          "qty_confirmed": "3,874",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "3,874",
+          "cumulative_confirmed": "16,41,708",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "16,41,708"
+        },
+        {
+          "price_interval": "688.05",
+          "no_of_bids": "1",
+          "qty_confirmed": "300",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "300",
+          "cumulative_confirmed": "16,37,834",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "16,37,834"
+        },
+        {
+          "price_interval": "689",
+          "no_of_bids": "2",
+          "qty_confirmed": "14,200",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "14,200",
+          "cumulative_confirmed": "16,37,534",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "16,37,534"
+        },
+        {
+          "price_interval": "689.35",
+          "no_of_bids": "1",
+          "qty_confirmed": "500",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "500",
+          "cumulative_confirmed": "16,23,334",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "16,23,334"
+        },
+        {
+          "price_interval": "689.9",
+          "no_of_bids": "1",
+          "qty_confirmed": "2,100",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "2,100",
+          "cumulative_confirmed": "16,22,834",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "16,22,834"
+        },
+        {
+          "price_interval": "690",
+          "no_of_bids": "67",
+          "qty_confirmed": "59,417",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "59,417",
+          "cumulative_confirmed": "16,20,734",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "16,20,734"
+        },
+        {
+          "price_interval": "690.05",
+          "no_of_bids": "1",
+          "qty_confirmed": "1,000",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,000",
+          "cumulative_confirmed": "15,61,317",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,61,317"
+        },
+        {
+          "price_interval": "690.1",
+          "no_of_bids": "2",
+          "qty_confirmed": "1,130",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,130",
+          "cumulative_confirmed": "15,60,317",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,60,317"
+        },
+        {
+          "price_interval": "690.25",
+          "no_of_bids": "1",
+          "qty_confirmed": "450",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "450",
+          "cumulative_confirmed": "15,59,187",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,59,187"
+        },
+        {
+          "price_interval": "690.5",
+          "no_of_bids": "5",
+          "qty_confirmed": "1,575",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,575",
+          "cumulative_confirmed": "15,58,737",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,58,737"
+        },
+        {
+          "price_interval": "691",
+          "no_of_bids": "29",
+          "qty_confirmed": "20,927",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "20,927",
+          "cumulative_confirmed": "15,57,162",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,57,162"
+        },
+        {
+          "price_interval": "691.05",
+          "no_of_bids": "1",
+          "qty_confirmed": "1,600",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,600",
+          "cumulative_confirmed": "15,36,235",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,36,235"
+        },
+        {
+          "price_interval": "691.1",
+          "no_of_bids": "1",
+          "qty_confirmed": "450",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "450",
+          "cumulative_confirmed": "15,34,635",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,34,635"
+        },
+        {
+          "price_interval": "691.6",
+          "no_of_bids": "2",
+          "qty_confirmed": "900",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "900",
+          "cumulative_confirmed": "15,34,185",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,34,185"
+        },
+        {
+          "price_interval": "691.85",
+          "no_of_bids": "1",
+          "qty_confirmed": "300",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "300",
+          "cumulative_confirmed": "15,33,285",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,33,285"
+        },
+        {
+          "price_interval": "691.9",
+          "no_of_bids": "8",
+          "qty_confirmed": "3,370",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "3,370",
+          "cumulative_confirmed": "15,32,985",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,32,985"
+        },
+        {
+          "price_interval": "692",
+          "no_of_bids": "6",
+          "qty_confirmed": "5,490",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "5,490",
+          "cumulative_confirmed": "15,29,615",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,29,615"
+        },
+        {
+          "price_interval": "692.25",
+          "no_of_bids": "1",
+          "qty_confirmed": "290",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "290",
+          "cumulative_confirmed": "15,24,125",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,24,125"
+        },
+        {
+          "price_interval": "693",
+          "no_of_bids": "4",
+          "qty_confirmed": "2,466",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "2,466",
+          "cumulative_confirmed": "15,23,835",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,23,835"
+        },
+        {
+          "price_interval": "695",
+          "no_of_bids": "29",
+          "qty_confirmed": "3,12,360",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "3,12,360",
+          "cumulative_confirmed": "15,21,369",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "15,21,369"
+        },
+        {
+          "price_interval": "695.05",
+          "no_of_bids": "2",
+          "qty_confirmed": "2,400",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "2,400",
+          "cumulative_confirmed": "12,09,009",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "12,09,009"
+        },
+        {
+          "price_interval": "695.1",
+          "no_of_bids": "3",
+          "qty_confirmed": "1,998",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,998",
+          "cumulative_confirmed": "12,06,609",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "12,06,609"
+        },
+        {
+          "price_interval": "695.2",
+          "no_of_bids": "2",
+          "qty_confirmed": "20,300",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "20,300",
+          "cumulative_confirmed": "12,04,611",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "12,04,611"
+        },
+        {
+          "price_interval": "695.25",
+          "no_of_bids": "1",
+          "qty_confirmed": "1,000",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,000",
+          "cumulative_confirmed": "11,84,311",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "11,84,311"
+        },
+        {
+          "price_interval": "695.55",
+          "no_of_bids": "1",
+          "qty_confirmed": "1,401",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,401",
+          "cumulative_confirmed": "11,83,311",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "11,83,311"
+        },
+        {
+          "price_interval": "696",
+          "no_of_bids": "2",
+          "qty_confirmed": "1,292",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,292",
+          "cumulative_confirmed": "11,81,910",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "11,81,910"
+        },
+        {
+          "price_interval": "696.8",
+          "no_of_bids": "1",
+          "qty_confirmed": "290",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "290",
+          "cumulative_confirmed": "11,80,618",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "11,80,618"
+        },
+        {
+          "price_interval": "697",
+          "no_of_bids": "1",
+          "qty_confirmed": "400",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "400",
+          "cumulative_confirmed": "11,80,328",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "11,80,328"
+        },
+        {
+          "price_interval": "698",
+          "no_of_bids": "7",
+          "qty_confirmed": "3,468",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "3,468",
+          "cumulative_confirmed": "11,79,928",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "11,79,928"
+        },
+        {
+          "price_interval": "698.6",
+          "no_of_bids": "1",
+          "qty_confirmed": "290",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "290",
+          "cumulative_confirmed": "11,76,460",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "11,76,460"
+        },
+        {
+          "price_interval": "699",
+          "no_of_bids": "2",
+          "qty_confirmed": "545",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "545",
+          "cumulative_confirmed": "11,76,170",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "11,76,170"
+        },
+        {
+          "price_interval": "699.5",
+          "no_of_bids": "1",
+          "qty_confirmed": "2,000",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "2,000",
+          "cumulative_confirmed": "11,75,625",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "11,75,625"
+        },
+        {
+          "price_interval": "700",
+          "no_of_bids": "67",
+          "qty_confirmed": "4,33,988",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "4,33,988",
+          "cumulative_confirmed": "11,73,625",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "11,73,625"
+        },
+        {
+          "price_interval": "700.05",
+          "no_of_bids": "2",
+          "qty_confirmed": "2,000",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "2,000",
+          "cumulative_confirmed": "7,39,637",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "7,39,637"
+        },
+        {
+          "price_interval": "700.1",
+          "no_of_bids": "1",
+          "qty_confirmed": "4,500",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "4,500",
+          "cumulative_confirmed": "7,37,637",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "7,37,637"
+        },
+        {
+          "price_interval": "700.25",
+          "no_of_bids": "3",
+          "qty_confirmed": "900",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "900",
+          "cumulative_confirmed": "7,33,137",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "7,33,137"
+        },
+        {
+          "price_interval": "700.5",
+          "no_of_bids": "3",
+          "qty_confirmed": "3,355",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "3,355",
+          "cumulative_confirmed": "7,32,237",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "7,32,237"
+        },
+        {
+          "price_interval": "701",
+          "no_of_bids": "28",
+          "qty_confirmed": "26,236",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "26,236",
+          "cumulative_confirmed": "7,28,882",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "7,28,882"
+        },
+        {
+          "price_interval": "701.05",
+          "no_of_bids": "1",
+          "qty_confirmed": "1,426",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,426",
+          "cumulative_confirmed": "7,02,646",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "7,02,646"
+        },
+        {
+          "price_interval": "701.1",
+          "no_of_bids": "1",
+          "qty_confirmed": "1,500",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,500",
+          "cumulative_confirmed": "7,01,220",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "7,01,220"
+        },
+        {
+          "price_interval": "701.25",
+          "no_of_bids": "1",
+          "qty_confirmed": "511",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "511",
+          "cumulative_confirmed": "6,99,720",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,99,720"
+        },
+        {
+          "price_interval": "701.5",
+          "no_of_bids": "2",
+          "qty_confirmed": "550",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "550",
+          "cumulative_confirmed": "6,99,209",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,99,209"
+        },
+        {
+          "price_interval": "701.75",
+          "no_of_bids": "4",
+          "qty_confirmed": "16,690",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "16,690",
+          "cumulative_confirmed": "6,98,659",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,98,659"
+        },
+        {
+          "price_interval": "702",
+          "no_of_bids": "6",
+          "qty_confirmed": "16,520",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "16,520",
+          "cumulative_confirmed": "6,81,969",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,81,969"
+        },
+        {
+          "price_interval": "702.1",
+          "no_of_bids": "1",
+          "qty_confirmed": "250",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "250",
+          "cumulative_confirmed": "6,65,449",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,65,449"
+        },
+        {
+          "price_interval": "702.25",
+          "no_of_bids": "1",
+          "qty_confirmed": "990",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "990",
+          "cumulative_confirmed": "6,65,199",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,65,199"
+        },
+        {
+          "price_interval": "702.5",
+          "no_of_bids": "1",
+          "qty_confirmed": "250",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "250",
+          "cumulative_confirmed": "6,64,209",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,64,209"
+        },
+        {
+          "price_interval": "703",
+          "no_of_bids": "2",
+          "qty_confirmed": "689",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "689",
+          "cumulative_confirmed": "6,63,959",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,63,959"
+        },
+        {
+          "price_interval": "703.1",
+          "no_of_bids": "1",
+          "qty_confirmed": "300",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "300",
+          "cumulative_confirmed": "6,63,270",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,63,270"
+        },
+        {
+          "price_interval": "704",
+          "no_of_bids": "2",
+          "qty_confirmed": "1,010",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,010",
+          "cumulative_confirmed": "6,62,970",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,62,970"
+        },
+        {
+          "price_interval": "704.1",
+          "no_of_bids": "1",
+          "qty_confirmed": "1,200",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,200",
+          "cumulative_confirmed": "6,61,960",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,61,960"
+        },
+        {
+          "price_interval": "705",
+          "no_of_bids": "14",
+          "qty_confirmed": "3,04,373",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "3,04,373",
+          "cumulative_confirmed": "6,60,760",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "6,60,760"
+        },
+        {
+          "price_interval": "705.1",
+          "no_of_bids": "1",
+          "qty_confirmed": "500",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "500",
+          "cumulative_confirmed": "3,56,387",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "3,56,387"
+        },
+        {
+          "price_interval": "705.2",
+          "no_of_bids": "1",
+          "qty_confirmed": "800",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "800",
+          "cumulative_confirmed": "3,55,887",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "3,55,887"
+        },
+        {
+          "price_interval": "705.55",
+          "no_of_bids": "2",
+          "qty_confirmed": "2,00,000",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "2,00,000",
+          "cumulative_confirmed": "3,55,087",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "3,55,087"
+        },
+        {
+          "price_interval": "706",
+          "no_of_bids": "2",
+          "qty_confirmed": "1,00,300",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,00,300",
+          "cumulative_confirmed": "1,55,087",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "1,55,087"
+        },
+        {
+          "price_interval": "706.3",
+          "no_of_bids": "1",
+          "qty_confirmed": "2,000",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "2,000",
+          "cumulative_confirmed": "54,787",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "54,787"
+        },
+        {
+          "price_interval": "706.5",
+          "no_of_bids": "1",
+          "qty_confirmed": "285",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "285",
+          "cumulative_confirmed": "52,787",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "52,787"
+        },
+        {
+          "price_interval": "707",
+          "no_of_bids": "1",
+          "qty_confirmed": "5,555",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "5,555",
+          "cumulative_confirmed": "52,502",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "52,502"
+        },
+        {
+          "price_interval": "708",
+          "no_of_bids": "1",
+          "qty_confirmed": "700",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "700",
+          "cumulative_confirmed": "46,947",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "46,947"
+        },
+        {
+          "price_interval": "708.4",
+          "no_of_bids": "1",
+          "qty_confirmed": "500",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "500",
+          "cumulative_confirmed": "46,247",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "46,247"
+        },
+        {
+          "price_interval": "709",
+          "no_of_bids": "2",
+          "qty_confirmed": "620",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "620",
+          "cumulative_confirmed": "45,747",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "45,747"
+        },
+        {
+          "price_interval": "710",
+          "no_of_bids": "16",
+          "qty_confirmed": "8,345",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "8,345",
+          "cumulative_confirmed": "45,127",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "45,127"
+        },
+        {
+          "price_interval": "710.1",
+          "no_of_bids": "1",
+          "qty_confirmed": "350",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "350",
+          "cumulative_confirmed": "36,782",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "36,782"
+        },
+        {
+          "price_interval": "710.2",
+          "no_of_bids": "1",
+          "qty_confirmed": "282",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "282",
+          "cumulative_confirmed": "36,432",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "36,432"
+        },
+        {
+          "price_interval": "711",
+          "no_of_bids": "15",
+          "qty_confirmed": "8,000",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "8,000",
+          "cumulative_confirmed": "36,150",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "36,150"
+        },
+        {
+          "price_interval": "711.5",
+          "no_of_bids": "1",
+          "qty_confirmed": "1,400",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,400",
+          "cumulative_confirmed": "28,150",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "28,150"
+        },
+        {
+          "price_interval": "712",
+          "no_of_bids": "3",
+          "qty_confirmed": "1,440",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "1,440",
+          "cumulative_confirmed": "26,750",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "26,750"
+        },
+        {
+          "price_interval": "713.2",
+          "no_of_bids": "1",
+          "qty_confirmed": "2,000",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "2,000",
+          "cumulative_confirmed": "25,310",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "25,310"
+        },
+        {
+          "price_interval": "714.05",
+          "no_of_bids": "1",
+          "qty_confirmed": "417",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "417",
+          "cumulative_confirmed": "23,310",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "23,310"
+        },
+        {
+          "price_interval": "715",
+          "no_of_bids": "4",
+          "qty_confirmed": "2,014",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "2,014",
+          "cumulative_confirmed": "22,893",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "22,893"
+        },
+        {
+          "price_interval": "715.15",
+          "no_of_bids": "1",
+          "qty_confirmed": "290",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "290",
+          "cumulative_confirmed": "20,879",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "20,879"
+        },
+        {
+          "price_interval": "720",
+          "no_of_bids": "22",
+          "qty_confirmed": "15,284",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "15,284",
+          "cumulative_confirmed": "20,589",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "20,589"
+        },
+        {
+          "price_interval": "791",
+          "no_of_bids": "1",
+          "qty_confirmed": "800",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "800",
+          "cumulative_confirmed": "5,305",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "5,305"
+        },
+        {
+          "price_interval": "800",
+          "no_of_bids": "1",
+          "qty_confirmed": "5",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "5",
+          "cumulative_confirmed": "4,505",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "4,505"
+        },
+        {
+          "price_interval": "885",
+          "no_of_bids": "6",
+          "qty_confirmed": "4,500",
+          "qty_yet_to_confirm": "-",
+          "qty_total": "4,500",
+          "cumulative_confirmed": "4,500",
+          "cumulative_yet_to_confirm": "-",
+          "cumulative_total": "4,500"
+        }
+      ]
+    }
+  ]
+}

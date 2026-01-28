@@ -9,6 +9,6 @@ async def scrap_page(url: str) -> dict:
 
     soup = BeautifulSoup(resp.text, "html.parser")
 
-    print(soup)
+    return soup
 
 asyncio.run(scrap_page("https://www.bseindia.com/markets/PublicIssues/BSEbidDetails_ofs.aspx?flag=NR&Scripcode=544282"))
