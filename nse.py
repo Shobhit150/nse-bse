@@ -48,7 +48,6 @@ def scrape_nse_ofs():
         try:
             print("📡 Connecting to NSE...")
             
-            # ✅ First visit homepage with retry logic
             max_retries = 3
             for attempt in range(max_retries):
                 try:
@@ -64,24 +63,20 @@ def scrape_nse_ofs():
                     else:
                         raise e
             
-            page.wait_for_timeout(5000)  # Longer wait for cookies/session
+            page.wait_for_timeout(5000) 
             
-            # ✅ Navigate to OFS page
             print("🔄 Loading OFS page...")
             page.goto(URL, wait_until="domcontentloaded", timeout=60000)
             page.wait_for_timeout(5000)
             
-            # ✅ Click General Category
             print("📊 Opening General Category...")
             page.click("text=General Category", timeout=15000)
             page.wait_for_timeout(3000)
             
-            # ✅ Click Refresh
             print("🔄 Refreshing data...")
             while(True) :
                 page.click("a[onclick=\"refreshApi('loadOfsGeneral')\"]", timeout=15000)
                 
-                # ✅ Wait for data
                 print("⏳ Waiting for data to load...")
                 page.wait_for_selector("#ofsGeneralTable tbody tr", timeout=30000)
                 page.wait_for_timeout(3000)
