@@ -64,10 +64,12 @@ class OFSScraper:
                                             
                         page.wait_for_timeout(700)
 
-                        page.wait_for_selector("#ofsRetailTable tbody tr", timeout=30000)
+
     
                         with self.state_lock:
                             self.nse_last_updated_ts = time.time()
+
+                        print(page.querySelectorAll("#ofsRetailTable tbody tr:nth-child(2) table tbody tr"))
 
                         temp_data = page.evaluate("""() => {
                             const data = {};
@@ -75,11 +77,13 @@ class OFSScraper:
                             
                             rows.forEach(row => {
                                 const cells = row.querySelectorAll("td");
-                                if (cells.length >= 3) {
+                                
                                     const price = cells[0].innerHTML;
                                     const qty = cells[2].innerHTML;
                                     data[price] = qty;
-                                }
+                                                  
+                                                  price = float(c[0].inner_text().strip())
+                                                qty = self.parse_int(c[2].inner_text())
                             });
                             
                             return data;
