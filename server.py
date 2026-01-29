@@ -4,35 +4,41 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from contextlib import asynccontextmanager
 from nsebse import OFSScraper
 import copy
-import traceback
+import logging
+import time
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+    datefmt="%H:%M:%S"
+)
+
+logger = logging.getLogger("WS")
 
 scraper = OFSScraper()
 clients = set()
+clients_needing_snapshot = set()
+
+ISSUE_SIZE = 4_757_707
+FLOOR_PRICE = 685
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print("=" * 50)
-    print("🚀 Starting server...")
     
     scraper_thread = threading.Thread(
         target=scraper.run_both,
         daemon=True
     )
     scraper_thread.start()
-    print("✅ Scraper thread started")
 
     broadcaster_task = asyncio.create_task(broadcaster())
-    print("✅ Broadcaster task started")
-
-    print("=" * 50)
     yield
     
-    print("=" * 50)
-    print("🛑 Server stopping...")
+
+
     scraper.nseRunning = False
     scraper.bseRunning = False
     broadcaster_task.cancel()
-    print("=" * 50)
 
 app = FastAPI(lifespan=lifespan)
 
@@ -55,111 +61,164 @@ async def health():
 
 @app.websocket("/ws/nse")
 async def nse_ws(ws: WebSocket):
-    client_id = id(ws)
-    print(f"\n{'='*50}")
-    print(f"➡️  NEW CONNECTION (ID: {client_id})")
-    
+    await ws.accept()
+    clients.add(ws)
+    clients_needing_snapshot.add(ws)
+    print(f"✅ Client connected: {id(ws)}")
+
     try:
-        await ws.accept()
-        print(f"✅ WebSocket ACCEPTED (ID: {client_id})")
-        
-        clients.add(ws)
-        print(f"👥 Total clients: {len(clients)}")
-        
-        with scraper.state_lock:
-            nse = dict(scraper.nse_data)
-            bse = dict(scraper.bse_data)
-        
-        merged = merge_price_qty(nse, bse)
-        if merged:
-            payload = [
-                {"price": p, "qty": q}
-                for p, q in sorted(merged.items())
-            ]
-            print(f"📤 Sending initial data to new client: {len(payload)} items")
-            try:
-                await ws.send_json(payload)
-                print(f"✅ Initial data sent successfully")
-            except Exception as e:
-                print(f"❌ Failed to send initial data: {e}")
-        else:
-            print("⚠️  No initial data to send (scraper has no data yet)")
-        
-        print(f"{'='*50}\n")
-        
         while True:
-            await asyncio.sleep(10)
-            await ws.send_json({"type": "ping"})
-                
+            await asyncio.sleep(3600)
     except WebSocketDisconnect:
-        print(f"\n❌ CLIENT DISCONNECTED (ID: {client_id})")
-    except Exception as e:
-        print(f"\n❌ ERROR in WebSocket (ID: {client_id}): {e}")
-        traceback.print_exc()
+        pass
     finally:
         clients.discard(ws)
-        print(f"🔌 Client removed. Remaining: {len(clients)}\n")
+        clients_needing_snapshot.discard(ws)
+        print(f"🧹 Client removed: {id(ws)}")
 
+
+def is_live(fetch_ts, max_age=120):
+    return fetch_ts is not None and (time.time() - fetch_ts) <= max_age
 
 def merge_price_qty(nse, bse):
     prices = set(nse) | set(bse)
-    return {
+    merged = {
         p: nse.get(p, 0) + bse.get(p, 0)
         for p in prices
     }
+    nse_floor_for_retail = scraper.nse_cutoff_qty or 0
+    bse_floor_for_retail = scraper.bse_cutoff_qty or 0
+    floor_qty = nse_floor_for_retail + bse_floor_for_retail
+    if(floor_qty>0):
+        merged[FLOOR_PRICE] = merged.get(FLOOR_PRICE, 0) + floor_qty
+    return merged
+
+def cumulative_high_to_low(merged: dict, issue_size: int):
+    cumulative = 0
+    result = []
+    cutoff_price = None
+
+    for price in sorted(merged.keys(), reverse=True):
+        cumulative += merged[price]
+        result.append({
+            "price": price,
+            "qty": merged[price],
+            "cumulative_qty": cumulative
+        })
+
+        if cutoff_price is None and cumulative >= issue_size:
+            cutoff_price = price
+
+    return result, cutoff_price
+
+def subscription_metrics(cumulative, issue_size):
+    if not cumulative:
+        return {
+            "total_demand": 0,
+            "subscription_pct": 0.0,
+            "remaining_qty": issue_size,
+            "oversubscribed": False,
+            "top_price": None
+        }
+
+    total_demand = cumulative[-1]["cumulative_qty"]
+    subscription_pct = round((total_demand / issue_size) * 100, 2)
+
+    return {
+        "total_demand": total_demand,
+        "subscription_pct": subscription_pct,
+        "remaining_qty": max(0, issue_size - total_demand),
+        "oversubscribed": total_demand >= issue_size,
+        "top_price": cumulative[0]["price"]
+    }
 
 async def broadcaster():
+    logger.info("Broadcaster loop started")
     last_sent = None
-    iteration = 0
-    print("\n📡 BROADCASTER STARTED\n")
+    tick = 0
 
     while True:
         try:
-            iteration += 1
-            
+            tick += 1
+
             with scraper.state_lock:
                 nse = copy.deepcopy(scraper.nse_data)
                 bse = copy.deepcopy(scraper.bse_data)
 
+                nse_last_updated_ts = scraper.nse_last_updated_ts
+                bse_last_updated_ts = scraper.bse_last_updated_ts
+
+            if tick % 10 == 0:
+                logger.info(
+                    "State snapshot | nse=%d | bse=%d | clients=%d",
+                    len(nse),
+                    len(bse),
+                    len(clients)
+                )
+
             merged = merge_price_qty(nse, bse)
 
-            if iteration % 20 == 0:
-                print(f"📊 Stats: NSE={len(nse)}, BSE={len(bse)}, Merged={len(merged)}, Clients={len(clients)}")
+            if not merged:
+                logger.debug("No merged data yet, skipping broadcast")
+                await asyncio.sleep(0.5)
+                continue
 
-            if merged and merged != last_sent:
-                payload = [
-                    {"price": p, "qty": q}
-                    for p, q in sorted(merged.items())
-                ]
+            cumulative, cutoff_price = cumulative_high_to_low(
+                merged, ISSUE_SIZE
+            )
 
-                print(f"\n📤 BROADCASTING:")
-                print(f"   Items: {len(payload)}")
-                print(f"   Clients: {len(clients)}")
-                
-                if len(payload) <= 5:  # Show sample if small
-                    print(f"   Sample: {payload}")
+            metrics = subscription_metrics(cumulative, ISSUE_SIZE)
 
-                disconnected = set()
-                for ws in list(clients):
-                    try:
+            payload = {
+                "data": cumulative,
+                "meta": {
+                    "cutoff_price": cutoff_price,
+                    "total_demand": metrics["total_demand"],
+                    "subscription_pct": metrics["subscription_pct"],
+                    "remaining_qty": metrics["remaining_qty"],
+                    "oversubscribed": metrics["oversubscribed"],
+                    "top_price": metrics["top_price"],
+                    "issue_size": ISSUE_SIZE,
+                    "bse_last_updated_ts": bse_last_updated_ts,
+                    "nse_last_updated_ts": nse_last_updated_ts
+                }
+            }
+
+            sent = 0
+            skipped = 0
+            dead = set()
+
+            for ws in list(clients):
+                try:
+                    if cumulative != last_sent or ws in clients_needing_snapshot:
                         await ws.send_json(payload)
-                    except Exception as e:
-                        print(f"   ❌ Failed to send to client: {e}")
-                        disconnected.add(ws)
+                        clients_needing_snapshot.discard(ws)
+                        sent += 1
+                    else:
+                        skipped += 1
 
-                clients.difference_update(disconnected)
-                if disconnected:
-                    print(f"   🗑️  Removed {len(disconnected)} disconnected clients")
+                except (WebSocketDisconnect, RuntimeError):
+                    dead.add(ws)
 
-                last_sent = copy.deepcopy(merged)
-                print()
+            if dead:
+                clients.difference_update(dead)
+                clients_needing_snapshot.difference_update(dead)
+                logger.warning("Removed %d dead clients", len(dead))
 
+            if sent > 0:
+                logger.info(
+                    "Broadcast sent | sent=%d | skipped=%d | cutoff=%s",
+                    sent,
+                    skipped,
+                    cutoff_price
+                )
+
+            last_sent = copy.deepcopy(cumulative)
             await asyncio.sleep(0.5)
 
         except asyncio.CancelledError:
-            print("📡 Broadcaster cancelled")
+            logger.info("Broadcaster cancelled")
             break
-        except Exception as e:
-            print(f"❌ Broadcaster error: {e}")
-            traceback.print_exc()
+        except Exception:
+            logger.exception("Broadcaster error")
             await asyncio.sleep(1)

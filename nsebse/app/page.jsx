@@ -1,152 +1,203 @@
 "use client"
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from "react"
 
 export default function Home() {
   const [data, setData] = useState([])
-  const [status, setStatus] = useState('disconnected')
+  const [meta, setMeta] = useState({})
+  const [status, setStatus] = useState("disconnected")
   const [error, setError] = useState(null)
   const [messageCount, setMessageCount] = useState(0)
+  const [expanded, setExpanded] = useState(false)
 
   const socketRef = useRef(null)
   const prevHashRef = useRef(null)
   const reconnectTimeoutRef = useRef(null)
 
+  const formatTime = (ts) => {
+    if (!ts) return "—"
+    return new Date(ts * 1000).toLocaleString()
+  }
+
   const connect = () => {
-    console.log('🔌 Attempting to connect to WebSocket...')
-    setStatus('connecting')
+    setStatus("connecting")
     setError(null)
 
-    const ws = new WebSocket('ws://127.0.0.1:8000/ws/nse')
+    const ws = new WebSocket("ws://127.0.0.1:8000/ws/nse")
     socketRef.current = ws
 
-    ws.onopen = () => {
-      console.log('✅ WebSocket CONNECTED')
-      setStatus('connected')
-      setError(null)
-    }
+    ws.onopen = () => setStatus("connected")
 
     ws.onmessage = (event) => {
-      console.log('📨 Received message:', event.data.substring(0, 100) + '...')
-      
       try {
-        const newData = JSON.parse(event.data)
-        
-        // Ignore ping messages
-        if (newData.type === 'ping') {
-          console.log('🏓 Ping received')
-          return
-        }
+        const msg = JSON.parse(event.data)
+        if (!msg?.data) return
 
-        setMessageCount(prev => prev + 1)
-        console.log(`📊 Message #${messageCount + 1}, Items: ${newData.length}`)
+        const hash = JSON.stringify(msg.data)
+        if (hash === prevHashRef.current) return
+        prevHashRef.current = hash
 
-        const hash = JSON.stringify(newData)
-        if (hash !== prevHashRef.current) {
-          console.log('✅ Data changed, updating state')
-          prevHashRef.current = hash
-          setData(newData)
-        } else {
-          console.log('⏭️  Data unchanged')
-        }
+        setData(msg.data)
+        setMeta(msg.meta || {})
+        setMessageCount((c) => c + 1)
       } catch (err) {
-        console.error('❌ Failed to parse message:', err)
-        setError(`Parse error: ${err.message}`)
+        setError(err.message)
       }
     }
 
-    ws.onerror = (err) => {
-      console.error('❌ WebSocket ERROR:', err)
-      setError('WebSocket error occurred')
-      setStatus('error')
+    ws.onerror = () => {
+      setStatus("error")
+      setError("WebSocket error")
     }
 
-    ws.onclose = (event) => {
-      console.log('❌ WebSocket CLOSED:', {
-        code: event.code,
-        reason: event.reason,
-        wasClean: event.wasClean
-      })
-      setStatus('disconnected')
-      setError(`Connection closed (code: ${event.code})`)
-      
-      // Auto-reconnect after 3 seconds
-      console.log('🔄 Reconnecting in 3 seconds...')
+    ws.onclose = () => {
+      setStatus("disconnected")
       reconnectTimeoutRef.current = setTimeout(connect, 3000)
     }
   }
 
   useEffect(() => {
     connect()
-
     return () => {
-      console.log('🧹 Cleaning up...')
-      if (reconnectTimeoutRef.current) {
-        clearTimeout(reconnectTimeoutRef.current)
-      }
-      if (socketRef.current) {
-        socketRef.current.close()
-      }
+      socketRef.current?.close()
+      clearTimeout(reconnectTimeoutRef.current)
     }
   }, [])
 
+  const statusBadge = {
+    connected: "bg-green-600",
+    connecting: "bg-yellow-500",
+    error: "bg-red-600",
+    disconnected: "bg-gray-500",
+  }[status]
+
+  const issueSize = meta.issue_size || 0
+
+  const previewRows =
+    data.length > 6
+      ? [...data.slice(0, 3), ...data.slice(-3)]
+      : data
+
   return (
-    <div style={{ padding: '20px', fontFamily: 'monospace' }}>
-      <h1>OFS Merged Data</h1>
-      
-      {/* Status Banner */}
-      <div style={{
-        padding: '10px',
-        marginBottom: '20px',
-        borderRadius: '5px',
-        backgroundColor: 
-          status === 'connected' ? '#d4edda' :
-          status === 'connecting' ? '#fff3cd' :
-          status === 'error' ? '#f8d7da' : '#e2e3e5',
-        border: '1px solid',
-        borderColor:
-          status === 'connected' ? '#c3e6cb' :
-          status === 'connecting' ? '#ffeeba' :
-          status === 'error' ? '#f5c6cb' : '#d6d8db'
-      }}>
-        <strong>Status:</strong> {status.toUpperCase()} | 
-        <strong> Messages:</strong> {messageCount} | 
-        <strong> Items:</strong> {data.length}
-        {error && <div style={{ color: 'red', marginTop: '5px' }}>Error: {error}</div>}
+    <div className="max-w-6xl mx-auto p-6 font-mono">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-semibold">OFS Order Book</h1>
+        <span className={`text-xs px-3 py-1 rounded-full text-white ${statusBadge}`}>
+          {status.toUpperCase()}
+        </span>
       </div>
 
-      {status !== 'connected' && (
-        <div style={{ padding: '20px', backgroundColor: '#fff3cd', marginBottom: '20px' }}>
-          <h3>⚠️ Not Connected</h3>
-          <p>Make sure the backend is running on <code>http://127.0.0.1:8000</code></p>
-          <p>Test it by visiting: <a href="http://127.0.0.1:8000/health" target="_blank">http://127.0.0.1:8000/health</a></p>
-          <button onClick={connect} style={{ padding: '10px 20px', cursor: 'pointer' }}>
-            Retry Connection
-          </button>
+      {/* Summary Table */}
+     
+        <div className="grid grid-cols-3 border text-sm mb-4">
+
+          <GridItem
+            label="Subscription"
+            value={meta.subscription_pct ? `${meta.subscription_pct.toFixed(2)}%` : "—"}
+          />
+          <GridItem
+            label="Remaining Qty"
+            value={meta.remaining_qty?.toLocaleString() ?? "—"}
+          />
+
+          <GridItem label="Cutoff Price" value={meta.cutoff_price ?? "—"} />
+          <GridItem label="Top Price" value={meta.top_price ?? "—"} />
+
+          <GridItem
+            label="Issue Size"
+            value={meta.issue_size?.toLocaleString() ?? "—"}
+          />
+          <GridItem label="NSE Time" value={formatTime(meta.nse_last_updated_ts)} />
+          <GridItem label="BSE Time" value={formatTime(meta.bse_last_updated_ts)} />
+        </div>
+
+
+      {/* Preview Table (Top + Bottom 3) */}
+      {previewRows.length > 0 && (
+        <div className="mb-4 overflow-hidden rounded-lg border bg-white">
+          <table className="w-full text-sm">
+            <thead className="bg-slate-100">
+              <tr>
+                <th className="px-3 py-2 text-left">Price</th>
+                <th className="px-3 py-2 text-right">Qty</th>
+                <th className="px-3 py-2 text-right">Cumulative</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {previewRows.map((row, i) => (
+                <tr key={`${row.price}-${i}`} className="border-t">
+                  <td className="px-3 py-2">{row.price}</td>
+                  <td className="px-3 py-2 text-right">
+                    {row.qty.toLocaleString()}
+                  </td>
+                  <td className="px-3 py-2 text-right">
+                    {row.cumulative_qty.toLocaleString()}
+                  </td>
+
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
 
-      {data.length === 0 ? (
-        <div style={{ padding: '20px', backgroundColor: '#e2e3e5' }}>
-          {status === 'connected' ? 'Connected. Waiting for data...' : 'No data yet'}
-        </div>
-      ) : (
-        <table border="1" cellPadding="6" style={{ borderCollapse: 'collapse', width: '100%' }}>
-          <thead>
-            <tr style={{ backgroundColor: '#f0f0f0' }}>
-              <th>Price</th>
-              <th>Qty</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((row) => (
-              <tr key={row.price}>
-                <td>{row.price}</td>
-                <td>{row.qty}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* Toggle */}
+      {data.length > 0 && (
+        <button
+          onClick={() => setExpanded((v) => !v)}
+          className="mb-3 flex items-center gap-2 rounded border px-3 py-1 text-sm hover:bg-slate-100"
+        >
+          <span className="font-bold">{expanded ? "−" : "+"}</span>
+          {expanded ? "Hide Full Order Book" : "Show Full Order Book"}
+        </button>
       )}
+
+      {/* Full Table */}
+      {expanded && (
+        <div className="overflow-hidden rounded-lg border bg-white">
+          <table className="w-full text-sm">
+            <thead className="bg-slate-100">
+              <tr>
+                <th className="px-3 py-2 text-left">Price</th>
+                <th className="px-3 py-2 text-right">Qty</th>
+                <th className="px-3 py-2 text-right">Cumulative</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((row, i) => (
+                <tr key={`${row.price}-${i}`} className="border-t">
+                  <td className="px-3 py-2">{row.price}</td>
+                  <td className="px-3 py-2 text-right">
+                    {row.qty.toLocaleString()}
+                  </td>
+                  <td className="px-3 py-2 text-right">
+                    {row.cumulative_qty.toLocaleString()}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {/* Error */}
+      {error && (
+        <div className="mt-4 rounded border border-red-300 bg-red-50 px-4 py-2 text-red-700">
+          {error}
+        </div>
+      )}
+    </div>
+  )
+}
+
+/* ---------- Helpers ---------- */
+
+function GridItem({ label, value }) {
+  return (
+    <div className="flex flex-row justify-between border px-4 py-2">
+      <span className="text-xs text-gray-500">{label}</span>
+      <span className="font-medium text-gray-900">{value}</span>
     </div>
   )
 }
